@@ -34,5 +34,6 @@ A data pipeline system built with Mage.ai, PostgreSQL, and Grafana for detecting
 - [x] Phase 1: REST API Ingestion (api_ingestion)
 - [x] Phase 1: Pattern Detection Logic (pattern_processing)
 - [x] Phase 1: Throttled Alerting (email_alerter)
+    - *Enterprise Note:* Supports Power Automate Webhooks for native Outlook alerting.
 - [x] **Test Automation: 92% Coverage achieved**
 - [ ] Phase 2: Kafka Integration (Planned)

@@ -65,3 +65,14 @@ To run these continuously:
 *   **Database connection failed:** Ensure `docker-compose` is running and the credentials match `.env`.
 *   **Emails not sending:** Verify your SMTP App Password. If using Gmail, standard passwords often block programmatic access; you must generate an App Password.
 *   **Checking Logs:** You can view the logs for any failed pipeline run directly within the Mage.ai UI under the "Pipeline runs" tab.
+
+## 8. Enterprise Email Alternative: Webhooks + Power Automate
+
+If writing Graph API code or getting Azure App Registrations approved by your IT team is too heavy, there is a brilliant enterprise workaround using Microsoft Power Automate:
+
+1.  **In Power Automate:** Create a new flow triggered by "When an HTTP request is received."
+2.  Set the action as "Send an email (V2)" using Outlook.
+3.  Power Automate will generate a unique HTTP Webhook URL for you.
+4.  **In Mage.ai:** You don't need OAuth tokens or complex email code. You just use a standard `requests.post()` block to send a simple JSON payload to that Power Automate Webhook URL.
+5.  Power Automate receives the JSON, translates it, and sends the email natively through Outlook using your own account permissions. This is often the fastest way to bypass corporate OAuth restrictions for pipeline alerting!
+
