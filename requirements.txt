@@ -1,0 +1,6 @@
+pandas
+psycopg2-binary
+requests
+pytest
+pytest-cov
+pytest-mock

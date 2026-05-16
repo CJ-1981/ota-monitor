@@ -1,0 +1,108 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - dynamic_pattern_detector
+  - mark_processed
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: read_raw_data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: read_raw_data
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - summary_upsert
+  - email_alerter
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: dynamic_pattern_detector
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - read_raw_data
+  uuid: dynamic_pattern_detector
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: summary_upsert
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - dynamic_pattern_detector
+  uuid: summary_upsert
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: email_alerter
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - dynamic_pattern_detector
+  uuid: email_alerter
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: mark_processed
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - read_raw_data
+  uuid: mark_processed
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2026-05-16 00:00:00'
+data_integration: null
+description: Process raw data and detect driving patterns with watermarking.
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: pattern_processing
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+tags: []
+type: python
+uuid: pattern_processing
+variables: {}
+widgets: []
